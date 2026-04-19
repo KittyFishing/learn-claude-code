@@ -466,8 +466,10 @@ if __name__ == "__main__":
             query = input("\033[36ms10 >> \033[0m")
         except (EOFError, KeyboardInterrupt):
             break
-        if query.strip().lower() in ("q", "exit", ""):
+        if query.strip().lower() in ("q", "exit"):
             break
+        if not query.strip():
+            continue
         if query.strip() == "/team":
             print(TEAM.list_all())
             continue

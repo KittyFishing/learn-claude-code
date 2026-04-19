@@ -108,8 +108,10 @@ if __name__ == "__main__":
             query = input("\033[36ms01 >> \033[0m")
         except (EOFError, KeyboardInterrupt):
             break
-        if query.strip().lower() in ("q", "exit", ""):
+        if query.strip().lower() in ("q", "exit"):
             break
+        if not query.strip():
+            continue
         history.append({"role": "user", "content": query})
         agent_loop(history)
         response_content = history[-1]["content"]
